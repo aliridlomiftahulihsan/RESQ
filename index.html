@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="RESQ — Respon Quick. Informasi bencana, peta risiko, dan bantuan darurat.">
+  <title>RESQ — Respon Quick</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <main class="app" id="app">
+    <header class="topbar">
+      <div class="status-bar">
+        <span class="status-time" id="status-time">09.25</span>
+        <div class="status-icons" aria-label="Status perangkat">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M2 20h3v-4H2zm5 0h3v-7H7zm5 0h3V9h-3zm5 0h3V4h-3z" fill="currentColor"/>
+          </svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M2 8.5C7.8 3.2 16.2 3.2 22 8.5L12 20z" fill="currentColor"/>
+            <path d="M5.5 12.2C9 9.1 15 9.1 18.5 12.2L12 19z" fill="#fff"/>
+            <path d="M9 15.8c1.8-1.6 4.2-1.6 6 0L12 20z" fill="currentColor"/>
+          </svg>
+          <svg viewBox="0 0 28 16" aria-hidden="true">
+            <rect x="1" y="1" width="23" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="25" y="5" width="2" height="6" rx="1" fill="currentColor"/>
+            <rect x="3" y="3" width="15" height="10" rx="1.5" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="location-header">
+        <button class="location-icon icon-button" id="location-button" aria-label="Perbarui lokasi">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 6.5 8.5 4 15 6.5 21 4v13.5L15 20l-6.5-2.5L3 20z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M8.5 4v13.5M15 6.5V20" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          </svg>
+        </button>
+
+        <div class="location-copy">
+          <span>Lokasi Saya</span>
+          <strong id="location-name">Kota Yogyakarta</strong>
+        </div>
+
+        <button class="notification-button icon-button" id="notification-button" aria-label="Lihat notifikasi">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="18" cy="5" r="3.3" fill="#ef4444" stroke="#fff" stroke-width="1.3"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <section class="dashboard" id="home-page">
+      <button class="alert-banner" id="alert-banner" type="button">
+        <span class="alert-illustration" aria-hidden="true">
+          <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f5fb/512.webp" alt="">
+        </span>
+        <span class="alert-content">
+          <strong>Peringatan Erupsi Gunung</strong>
+          <span>Potensi erupsi di wilayah Anda<br>3 jam ke depan</span>
+          <span class="alert-detail">Lihat Detail <span aria-hidden="true">↗</span></span>
+        </span>
+        <span class="alert-arrow" aria-hidden="true">›</span>
+      </button>
+
+      <section class="quick-section" aria-label="Menu utama">
+        <div class="quick-grid">
+          <button class="quick-item" data-page="bencana">
+            <span class="quick-icon">
+              <svg viewBox="0 0 48 48" aria-hidden="true">
+                <path d="M10 35 24 10l14 25z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+                <path d="M24 20v7m0 4v.5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span>Semua<br>Bencana</span>
+          </button>
+
+          <button class="quick-item" data-page="peta">
+            <span class="quick-icon">
+              <svg viewBox="0 0 48 48" aria-hidden="true">
+                <path d="m5 12 12-6 14 6 12-6v30l-12 6-14-6-12 6z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+                <path d="M17 6v30m14-24v30" stroke="currentColor" stroke-width="3"/>
+                <circle cx="24" cy="19" r="4" fill="currentColor"/>
+              </svg>
+            </span>
+            <span>Peta<br>Risiko</span>
+          </button>
+
+          <button class="quick-item" data-page="info">
+            <span class="quick-icon">
+              <svg viewBox="0 0 48 48" aria-hidden="true">
+                <rect x="8" y="7" width="32" height="34" rx="5" fill="none" stroke="currentColor" stroke-width="3"/>
+                <circle cx="24" cy="17" r="2.5" fill="currentColor"/>
+                <path d="M24 23v11m-5-6h10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span>Info<br>Resmi</span>
+          </button>
+
+          <button class="quick-item" data-page="darurat">
+            <span class="quick-icon">
+              <svg viewBox="0 0 48 48" aria-hidden="true">
+                <path d="M24 5 43 39H5z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+                <path d="M24 17v10m0 6v.5" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span>Bantuan<br>Darurat</span>
+          </button>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <section class="disaster-section">
+        <div class="section-heading">
+          <h2>Bencana Terkini</h2>
+          <button class="text-link" data-page="bencana">Lihat Semua</button>
+        </div>
+
+        <div class="disaster-list" id="disaster-list">
+          <article class="disaster-card">
+            <div class="disaster-art volcano-art">
+              <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f5fb/512.webp" alt="Ilustrasi gunung">
+            </div>
+            <div class="disaster-info">
+              <span class="disaster-time">3 jam lalu</span>
+              <h3>Erupsi Gunung</h3>
+              <p class="disaster-location">Kota Yogyakarta</p>
+              <span class="risk risk-high"><span></span>Potensi Tinggi</span>
+            </div>
+            <button class="card-arrow" aria-label="Detail erupsi gunung" data-detail="erupsi">›</button>
+          </article>
+
+          <article class="disaster-card">
+            <div class="disaster-art weather-art">
+              <svg viewBox="0 0 64 64" role="img" aria-label="Ilustrasi hujan dan petir">
+                <path d="M16 35a12 12 0 0 1 1-24 17 17 0 0 1 32 5 10 10 0 0 1 1 19" fill="#b8d8ee" stroke="#507d9b" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="m34 32-10 15h9l-3 12 14-19h-10l5-8z" fill="#ffbd32" stroke="#dc8b16" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="disaster-info">
+              <span class="disaster-time">4 jam lalu</span>
+              <h3>Cuaca Ekstrem</h3>
+              <p class="disaster-location">Jawa Tengah</p>
+              <span class="risk risk-warning"><span></span>Waspada</span>
+            </div>
+            <button class="card-arrow" aria-label="Detail cuaca ekstrem" data-detail="cuaca">›</button>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <section class="content-page hidden" id="peta-page">
+      <div class="page-heading">
+        <h1>Peta Risiko</h1>
+        <p>Pantau area berisiko dan lokasi penting di sekitar Anda.</p>
+      </div>
+      <div class="map-placeholder">
+        <div class="map-road road-one"></div>
+        <div class="map-road road-two"></div>
+        <div class="map-road road-three"></div>
+        <div class="map-river"></div>
+        <div class="map-pin pin-user">●</div>
+        <div class="map-pin pin-risk">!</div>
+        <div class="map-label user-label">Lokasi Anda</div>
+        <div class="map-label risk-label">Area berisiko</div>
+        <button class="map-locate" id="map-locate" aria-label="Gunakan lokasi saat ini">◎</button>
+      </div>
+      <div class="map-legend">
+        <span><i class="legend-dot safe"></i> Area aman</span>
+        <span><i class="legend-dot warning"></i> Waspada</span>
+        <span><i class="legend-dot danger"></i> Bahaya</span>
+      </div>
+      <div class="info-card">
+        <h3>Posko Evakuasi Terdekat</h3>
+        <p>Periksa informasi posko dan rute evakuasi melalui sumber resmi setempat.</p>
+        <button class="primary-button" id="evacuation-button">Lihat Panduan Evakuasi</button>
+      </div>
+    </section>
+
+    <section class="content-page hidden" id="info-page">
+      <div class="page-heading">
+        <h1>Info Resmi</h1>
+        <p>Informasi kebencanaan dari sumber terpercaya.</p>
+      </div>
+
+      <article class="source-card">
+        <span class="source-icon weather-source">☀</span>
+        <div>
+          <h3>BMKG</h3>
+          <p>Informasi cuaca, iklim, dan peringatan dini.</p>
+          <a href="https://www.bmkg.go.id/" target="_blank" rel="noopener noreferrer">Kunjungi situs resmi ↗</a>
+        </div>
+      </article>
+
+      <article class="source-card">
+        <span class="source-icon safety-source">✚</span>
+        <div>
+          <h3>BNPB</h3>
+          <p>Informasi kejadian bencana dan penanggulangan.</p>
+          <a href="https://www.bnpb.go.id/" target="_blank" rel="noopener noreferrer">Kunjungi situs resmi ↗</a>
+        </div>
+      </article>
+
+      <article class="source-card">
+        <span class="source-icon mountain-source">△</span>
+        <div>
+          <h3>MAGMA Indonesia</h3>
+          <p>Informasi aktivitas gunung api dan mitigasi.</p>
+          <a href="https://magma.esdm.go.id/" target="_blank" rel="noopener noreferrer">Kunjungi situs resmi ↗</a>
+        </div>
+      </article>
+
+      <article class="source-card">
+        <span class="source-icon map-source">⌖</span>
+        <div>
+          <h3>BPBD DIY</h3>
+          <p>Informasi penanggulangan bencana daerah.</p>
+          <a href="https://bpbd.jogjaprov.go.id/" target="_blank" rel="noopener noreferrer">Kunjungi situs resmi ↗</a>
+        </div>
+      </article>
+
+      <div class="info-card">
+        <h3>Utamakan Keselamatan</h3>
+        <p>Ikuti arahan petugas dan gunakan informasi dari kanal resmi saat terjadi bencana.</p>
+      </div>
+    </section>
+
+    <section class="content-page hidden" id="bencana-page">
+      <div class="page-heading">
+        <h1>Semua Bencana</h1>
+        <p>Informasi dan status kejadian bencana.</p>
+      </div>
+      <div class="filter-tabs" role="group" aria-label="Filter bencana">
+        <button class="filter-tab active" data-filter="semua">Semua</button>
+        <button class="filter-tab" data-filter="tinggi">Bahaya Tinggi</button>
+        <button class="filter-tab" data-filter="waspada">Waspada</button>
+      </div>
+      <div class="all-disasters">
+        <article class="info-card filtered-disaster" data-risk="tinggi">
+          <span class="risk risk-high"><span></span>Potensi Tinggi</span>
+          <h3>Erupsi Gunung</h3>
+          <p>Kota Yogyakarta · 3 jam lalu</p>
+          <button class="text-link" data-detail="erupsi">Lihat detail →</button>
+        </article>
+        <article class="info-card filtered-disaster" data-risk="waspada">
+          <span class="risk risk-warning"><span></span>Waspada</span>
+          <h3>Cuaca Ekstrem</h3>
+          <p>Jawa Tengah · 4 jam lalu</p>
+          <button class="text-link" data-detail="cuaca">Lihat detail →</button>
+        </article>
+      </div>
+      <p class="disclaimer">Informasi contoh antarmuka. Status bencana harus dikonfirmasi melalui sumber resmi.</p>
+    </section>
+
+    <section class="content-page hidden" id="darurat-page">
+      <div class="page-heading">
+        <h1>Bantuan Darurat</h1>
+        <p>Hubungi layanan terkait saat Anda membutuhkan pertolongan.</p>
+      </div>
+
+      <div class="safety-notice">
+        <span class="notice-icon">!</span>
+        <div>
+          <h3>Utamakan Keselamatan</h3>
+          <p>Jika berada dalam bahaya, segera menuju tempat aman dan ikuti arahan petugas.</p>
+        </div>
+      </div>
+
+      <div class="emergency-list">
+        <article class="emergency-card">
+          <div class="emergency-row">
+            <div class="emergency-title">
+              <strong>112</strong>
+              <span>Layanan Darurat</span>
+            </div>
+            <a class="call-button" href="tel:112">☎ Hubungi</a>
+          </div>
+          <p>Nomor panggilan darurat terpadu. Ketersediaan layanan dapat berbeda menurut wilayah.</p>
+        </article>
+
+        <article class="emergency-card">
+          <div class="emergency-row">
+            <div class="emergency-title">
+              <strong>115</strong>
+              <span>BASARNAS</span>
+            </div>
+            <a class="call-button" href="tel:115">☎ Hubungi</a>
+          </div>
+          <p>Layanan pencarian dan pertolongan.</p>
+        </article>
+
+        <article class="emergency-card">
+          <div class="emergency-row">
+            <div class="emergency-title">
+              <strong>119</strong>
+              <span>Layanan Medis</span>
+            </div>
+            <a class="call-button" href="tel:119">☎ Hubungi</a>
+          </div>
+          <p>Bantuan kegawatdaruratan medis.</p>
+        </article>
+      </div>
+
+      <div class="info-card">
+        <h3>Saat Menghubungi Petugas</h3>
+        <ul class="safety-list">
+          <li>Berikan lokasi atau alamat sejelas mungkin.</li>
+          <li>Jelaskan jenis bahaya dan kondisi terkini.</li>
+          <li>Sampaikan jumlah orang yang membutuhkan bantuan.</li>
+        </ul>
+      </div>
+
+      <button class="sos-wide-button" id="sos-wide-button">
+        <span class="sos-symbol">SOS</span>
+        <span><strong>Sistem Pertolongan SOS</strong><small>Buka sistem bantuan darurat</small></span>
+        <span class="chevron">›</span>
+      </button>
+    </section>
+
+    <section class="content-page hidden" id="sos-page">
+      <div class="page-heading sos-heading">
+        <h1>Sistem Pertolongan SOS</h1>
+        <p>Gunakan fitur ini hanya saat benar-benar membutuhkan pertolongan darurat.</p>
+      </div>
+
+      <div class="sos-circle-wrap">
+        <div class="sos-circle">
+          <div class="sos-inner">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <path d="M32 5 53 13v16c0 14-9 24-21 30C20 53 11 43 11 29V13z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+              <path d="M32 20v15m0 8v1" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+            <strong>SOS</strong>
+            <span id="sos-countdown">Siap membantu</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="sos-trigger" id="sos-trigger">Aktifkan SOS</button>
+      <p class="sos-disclaimer">Permintaan ini tidak dikirim otomatis ke petugas. Gunakan tombol telepon untuk menghubungi layanan darurat secara langsung.</p>
+
+      <div class="info-card sos-status-card">
+        <h3 id="sos-status-title">Status Pertolongan</h3>
+        <p id="sos-status-text">Belum ada panggilan yang dilakukan.</p>
+        <div class="status-steps">
+          <div class="status-step">
+            <span class="step-dot"></span>
+            <small>Siap</small>
+          </div>
+          <div class="step-line"></div>
+          <div class="status-step">
+            <span class="step-dot"></span>
+            <small>Dihubungi</small>
+          </div>
+          <div class="step-line"></div>
+          <div class="status-step">
+            <span class="step-dot"></span>
+            <small>Ditangani</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="emergency-list">
+        <article class="emergency-card">
+          <div class="emergency-row">
+            <div class="emergency-title">
+              <strong>Basarnas</strong>
+              <span>Pencarian dan Pertolongan</span>
+            </div>
+            <a class="call-button" href="tel:115">Hubungi</a>
+          </div>
+        </article>
+        <article class="emergency-card">
+          <div class="emergency-row">
+            <div class="emergency-title">
+              <strong>Ambulans</strong>
+              <span>Layanan Medis Darurat</span>
+            </div>
+            <a class="call-button" href="tel:119">Hubungi</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-page hidden" id="profile-page">
+      <div class="page-heading">
+        <h1>Profil</h1>
+        <p>Pengaturan aplikasi dan informasi pengguna.</p>
+      </div>
+      <div class="profile-card">
+        <div class="profile-avatar">R</div>
+        <div>
+          <h2>Pengguna RESQ</h2>
+          <p>Pantau keselamatan Anda bersama RESQ.</p>
+        </div>
+      </div>
+      <div class="settings-list">
+        <button class="settings-item" id="profile-location">
+          <span>⌖</span><span>Lokasi Saya</span><strong>›</strong>
+        </button>
+        <button class="settings-item" id="profile-notifications">
+          <span>♧</span><span>Notifikasi</span><strong>›</strong>
+        </button>
+        <button class="settings-item" id="profile-info">
+          <span>ⓘ</span><span>Tentang RESQ</span><strong>›</strong>
+        </button>
+      </div>
+      <div class="info-card">
+        <h3>RESQ — Respon Quick</h3>
+        <p>Kenali risikonya, pahami tindakannya, lindungi diri dan orang tersayang.</p>
+      </div>
+    </section>
+
+    <nav class="bottom-nav" aria-label="Navigasi utama">
+      <button class="nav-item active" data-page="home" aria-label="Beranda">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1z" fill="currentColor"/>
+        </svg>
+        <span>Beranda</span>
+      </button>
+
+      <button class="nav-item" data-page="peta" aria-label="Peta">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m2 5 6-3 8 3 6-3v17l-6 3-8-3-6 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M8 2v17m8-14v17" stroke="currentColor" stroke-width="1.8"/>
+        </svg>
+        <span>Peta</span>
+      </button>
+
+      <button class="nav-item nav-sos" data-page="sos" aria-label="SOS">
+        <span class="sos-nav-circle">SOS</span>
+        <span>Emergency</span>
+      </button>
+
+      <button class="nav-item" data-page="bencana" aria-label="Bencana">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="4" y="3" width="16" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <span>Bencana</span>
+      </button>
+
+      <button class="nav-item" data-page="profile" aria-label="Profil">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <span>Profile</span>
+      </button>
+    </nav>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <dialog class="detail-dialog" id="detail-dialog">
+      <div class="dialog-handle"></div>
+      <button class="dialog-close" id="dialog-close" aria-label="Tutup">×</button>
+      <span class="dialog-badge">Informasi Bencana</span>
+      <h2 id="dialog-title">Detail Bencana</h2>
+      <p id="dialog-description"></p>
+      <div class="dialog-note">
+        <strong>Perhatian</strong>
+        <p>Informasi pada antarmuka ini merupakan contoh. Periksa pengumuman resmi dan ikuti arahan petugas setempat.</p>
+      </div>
+      <button class="primary-button" id="dialog-ok">Mengerti</button>
+    </dialog>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
